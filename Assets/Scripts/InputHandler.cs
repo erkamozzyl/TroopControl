@@ -13,11 +13,11 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.LeftShift))
         {
-            _selector.Selection();
+            _selector.SelectionByClick();
         }
         else if (Input.GetMouseButtonDown(1) && Input.GetKey(KeyCode.LeftShift))
         {
-            _selector.MultipleSelection();
+            _selector.MultipleSelectionByClick();
         }
         if (Input.GetMouseButtonDown(0))
         {

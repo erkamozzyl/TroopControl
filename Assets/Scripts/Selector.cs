@@ -18,7 +18,7 @@ public class Selector : MonoBehaviour
     private Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     private bool hasClicked, isHoldingDown, hasReleased, isHovering;
 
-    public void Selection()
+    public void SelectionByClick()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -50,7 +50,7 @@ public class Selector : MonoBehaviour
 
         }
     }
-    public void MultipleSelection()
+    public void MultipleSelectionByClick()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
