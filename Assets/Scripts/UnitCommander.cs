@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UnitCommander : MonoBehaviour
 {
     [SerializeField] public Camera mainCamera;
-    [SerializeField] public List<Unit> units;
+    [SerializeField] public List<Unit> selectedUnits;
 
 
     void Update()
@@ -26,7 +26,7 @@ public class UnitCommander : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            foreach (Unit unit in units)
+            foreach (Unit unit in selectedUnits)
             {
                 Debug.Log("hedefe gidiliyor");
                 unit.SetDestinationPoint(hit.point);

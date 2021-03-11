@@ -6,12 +6,12 @@ using UnityEngine;
 public class Selector : MonoBehaviour
 {
     private Camera mainCamera;
-    [SerializeField] private List<Unit> units;
+    private List<Unit> selectedUnits;
     [SerializeField] private UnitCommander _unitCommander;
 
     private void Start()
     {
-        units = _unitCommander.units;
+        selectedUnits = _unitCommander.selectedUnits;
         mainCamera = _unitCommander.mainCamera;
     }
 
@@ -25,26 +25,26 @@ public class Selector : MonoBehaviour
             Unit unit = hit.transform.gameObject.GetComponent<Unit>();
             if (hit.transform.GetComponent<Unit>() != null)
             {
-                foreach (Unit _unit in units)
+                foreach (Unit _unit in selectedUnits)
                 {
                     _unit.OnDropped();
                 }
 
-                units.Clear();
+                selectedUnits.Clear();
                 unit.OnSelected();
-                if (!units.Contains(unit))
+                if (!selectedUnits.Contains(unit))
                 {
-                    units.Add(unit);
+                    selectedUnits.Add(unit);
                 }
             }
             else
             {
-                foreach (Unit _unit in units)
+                foreach (Unit _unit in selectedUnits)
                 {
                     _unit.OnDropped();
                 }
 
-                units.Clear();
+                selectedUnits.Clear();
             }
 
         }
@@ -60,11 +60,11 @@ public class Selector : MonoBehaviour
             {
                    
                 unit.OnSelected();
-                if (!units.Contains(unit))
+                if (!selectedUnits.Contains(unit))
                 {
-                    units.Add(unit);
+                    selectedUnits.Add(unit);
                 }
-                units.Add(unit);
+                selectedUnits.Add(unit);
             }
             /*    else
                 {

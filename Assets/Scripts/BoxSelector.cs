@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BoxSelector : MonoBehaviour
 {
-     private Camera mainCamera;
-    [SerializeField] private List<Unit> units;
+    private Camera mainCamera;
+    private List<Unit> selectedUnits;
     [SerializeField] private RectTransform selectionBox;
     [SerializeField] private Unit[] allUnits;
     private List<Unit> highlightedUnits = new List<Unit>();
@@ -21,7 +21,7 @@ public class BoxSelector : MonoBehaviour
 
     private void Start()
     {
-        units = _unitCommander.units;
+        selectedUnits = _unitCommander.selectedUnits;
         mainCamera = _unitCommander.mainCamera;
     }
 
@@ -63,11 +63,11 @@ public class BoxSelector : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                for (int i = 0; i < units.Count; i++)
+                for (int i = 0; i < selectedUnits.Count; i++)
                 {
-                    units[i].OnDropped();
+                    selectedUnits[i].OnDropped();
                 }
-                units.Clear();
+                selectedUnits.Clear();
             }
             if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f))
             {
@@ -75,9 +75,9 @@ public class BoxSelector : MonoBehaviour
                 {
                     Unit activeUnit = hit.transform.GetComponent<Unit>();
                     activeUnit.OnSelected();
-                    if (!units.Contains(activeUnit))
+                    if (!selectedUnits.Contains(activeUnit))
                     {
-                        units.Add(activeUnit);
+                        selectedUnits.Add(activeUnit);
                     }
                 }
             }
@@ -111,12 +111,12 @@ public class BoxSelector : MonoBehaviour
             {
                 if ( !Input.GetKey(KeyCode.LeftShift))
                 {
-                    units.Clear();
+                    selectedUnits.Clear();
                 }
                 foreach (Unit unit in highlightedUnits)
                 {
                     unit.OnSelected();
-                    units.Add(unit);
+                    selectedUnits.Add(unit);
                 }
                 highlightedUnits.Clear();
             }
@@ -134,7 +134,7 @@ public class BoxSelector : MonoBehaviour
             if (hit.collider.CompareTag("Unit"))
             {
                 Unit currentObj = hit.transform.GetComponent<Unit>();
-                if (!units.Contains(currentObj))
+                if (!selectedUnits.Contains(currentObj))
                 {
                     previouslyHighlightedUnit = currentObj;
                 }
@@ -145,7 +145,7 @@ public class BoxSelector : MonoBehaviour
     {
         if (previouslyHighlightedUnit != null)
         {
-            if (!units.Contains(previouslyHighlightedUnit))
+            if (!selectedUnits.Contains(previouslyHighlightedUnit))
             {
                 previouslyHighlightedUnit = null;
             }
