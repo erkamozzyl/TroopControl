@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoxSelector : MonoBehaviour
 {
-    private Camera mainCamera;
+    [SerializeField]private Camera mainCamera;
     private List<Unit> selectedUnits;
     [SerializeField] private RectTransform selectionBox;
     [SerializeField] private Unit[] allUnits;
@@ -17,13 +17,7 @@ public class BoxSelector : MonoBehaviour
     private Vector3 TL, TR, BL, BR;
     private Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     private bool hasClicked, isHoldingDown, hasReleased, isHovering;
-    [SerializeField] private UnitCommander _unitCommander;
 
-    private void Start()
-    {
-        selectedUnits = _unitCommander.selectedUnits;
-        mainCamera = _unitCommander.mainCamera;
-    }
 
     public void CheckInput()
     {

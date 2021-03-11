@@ -3626,7 +3626,6 @@ GameObject:
   - component: {fileID: 1766063704}
   - component: {fileID: 1766063703}
   - component: {fileID: 1766063707}
-  - component: {fileID: 1766063706}
   - component: {fileID: 1766063705}
   m_Layer: 0
   m_Name: GameManager
@@ -3647,8 +3646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86304fbc644e4a449c0509336b561e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 963194227}
-  selectedUnits: []
+  _inputHandler: {fileID: 1766063707}
 --- !u!4 &1766063704
 Transform:
   m_ObjectHideFlags: 0
@@ -3675,19 +3673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eab6268ed6a4d60b5ed991e1c7a7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitCommander: {fileID: 1766063703}
---- !u!114 &1766063706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766063702}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e5c4be0e64c491ab91089a46be8cc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 963194227}
+  selectedUnits: []
   selectionBox: {fileID: 1441864114}
   allUnits:
   - {fileID: 166595936}
@@ -3696,7 +3683,6 @@ MonoBehaviour:
   - {fileID: 2018610462}
   - {fileID: 843046852}
   - {fileID: 918853554}
-  _unitCommander: {fileID: 1766063703}
 --- !u!114 &1766063707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3709,7 +3695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a429403ce36a0463b88c4cd431e2c5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxSelector: {fileID: 1766063706}
   _selector: {fileID: 1766063705}
 --- !u!1 &1868013520
 GameObject:

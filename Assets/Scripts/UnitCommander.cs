@@ -7,30 +7,20 @@ using UnityEngine.UI;
 
 public class UnitCommander : MonoBehaviour
 {
-    [SerializeField] public Camera mainCamera;
-    [SerializeField] public List<Unit> selectedUnits;
-
-
+    [SerializeField] private InputHandler _inputHandler;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GoDestination();
-        } 
-        
+            GoDestination(_inputHandler.DestinationPoint(),_inputHandler.GetSelectedUnits());
+        }
     }
-   
-    public void GoDestination()
+    public void GoDestination(Vector3 destPos, List<Unit> selectedUnits)
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        foreach (Unit unit in selectedUnits)
         {
-            foreach (Unit unit in selectedUnits)
-            {
-                Debug.Log("hedefe gidiliyor");
-                unit.SetDestinationPoint(hit.point);
-            }
+            Debug.Log("hedefe gidiliyor");
+            unit.SetDestinationPoint(destPos);
         }
     }
    

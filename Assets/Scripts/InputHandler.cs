@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private BoxSelector _boxSelector;
     [SerializeField] private Selector _selector;
 
     private void Update()
@@ -18,9 +17,25 @@ public class InputHandler : MonoBehaviour
         {
             _selector.MultipleSelection();
         }
-        _boxSelector.CheckInput();
-        _boxSelector.InteractWithUnits();
-        
-      
+        _selector.CheckInput();
+        _selector.InteractWithUnits();
     }
+
+     public List<Unit> GetSelectedUnits()
+     {
+         return _selector.selectedUnits;
+     }
+
+     public Vector3 DestinationPoint()
+     {
+         Vector3 destPos = default;
+         Ray ray = _selector.mainCamera.ScreenPointToRay(Input.mousePosition);
+         RaycastHit hit;
+         if (Physics.Raycast(ray, out hit))
+         {
+             destPos = hit.point;
+         }
+
+         return destPos;
+     }
 }
