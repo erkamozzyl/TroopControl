@@ -3648,7 +3648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
-  units: []
+  selectedUnits: []
 --- !u!4 &1766063704
 Transform:
   m_ObjectHideFlags: 0
@@ -3675,8 +3675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eab6268ed6a4d60b5ed991e1c7a7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  units: []
   _unitCommander: {fileID: 1766063703}
 --- !u!114 &1766063706
 MonoBehaviour:
@@ -3685,13 +3683,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766063702}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e5c4be0e64c491ab91089a46be8cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  units: []
   selectionBox: {fileID: 1441864114}
   allUnits:
   - {fileID: 166595936}
