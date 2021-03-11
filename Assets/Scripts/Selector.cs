@@ -32,7 +32,6 @@ public class Selector : MonoBehaviour
                 {
                     _unit.OnDropped();
                 }
-
                 selectedUnits.Clear();
                 unit.OnSelected();
                 if (!selectedUnits.Contains(unit))
@@ -46,7 +45,6 @@ public class Selector : MonoBehaviour
                 {
                     _unit.OnDropped();
                 }
-
                 selectedUnits.Clear();
             }
 

@@ -6,6 +6,8 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Selector _selector;
+    [SerializeField] private UnitCommander _unitCommander;
+    
 
     private void Update()
     {
@@ -17,6 +19,11 @@ public class InputHandler : MonoBehaviour
         {
             _selector.MultipleSelection();
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            _unitCommander.GoDestination(DestinationPoint(),GetSelectedUnits());
+        }
+        
         _selector.CheckInput();
         _selector.InteractWithUnits();
     }
