@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Selector : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
+    private Camera mainCamera;
     [SerializeField] private List<Unit> units;
     [SerializeField] private UnitCommander _unitCommander;
 

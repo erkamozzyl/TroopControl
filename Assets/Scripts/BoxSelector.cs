@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoxSelector : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
+     private Camera mainCamera;
     [SerializeField] private List<Unit> units;
     [SerializeField] private RectTransform selectionBox;
     [SerializeField] private Unit[] allUnits;
