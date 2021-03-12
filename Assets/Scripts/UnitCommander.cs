@@ -12,6 +12,8 @@ public class UnitCommander : MonoBehaviour
         foreach (Unit unit in selectedUnits)
         {
             unit.SetDestinationPoint(destPos);
+            
+            
         }
     }
    

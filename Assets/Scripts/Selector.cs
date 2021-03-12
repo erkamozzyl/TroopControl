@@ -77,7 +77,7 @@ public class Selector : MonoBehaviour
                 } */
         }
     }
-      public void CheckInput()
+    public void CheckInput()
     {
         hasClicked = false;
         isHoldingDown = false;

@@ -7,6 +7,9 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Selector _selector;
     [SerializeField] private UnitCommander _unitCommander;
+    [SerializeField] private TargetMovement _targetMovement;
+    public bool isTargetSpecific;
+    
     
 
     private void Update()
@@ -19,11 +22,30 @@ public class InputHandler : MonoBehaviour
         {
             _selector.MultipleSelectionByClick();
         }
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButton(0))
         {
-            _unitCommander.GoDestination(DestinationPoint(),GetSelectedUnits());
+            Ray ray = _selector.mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Target"))
+            {
+                _targetMovement = hit.transform.GetComponent<TargetMovement>();
+                isTargetSpecific = true;
+
+            }
+            
         }
-        
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (isTargetSpecific)
+            {
+                _unitCommander.GoDestination(_targetMovement.GetDestinationPos(),GetSelectedUnits());
+                
+                isTargetSpecific = false;
+            }
+            
+        }
+
         _selector.CheckInput();
         _selector.InteractWithUnits();
     }
