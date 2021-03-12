@@ -11,7 +11,7 @@ public class Selector : MonoBehaviour
     [SerializeField] public Unit[] allUnits;
     private List<Unit> highlightedUnits = new List<Unit>();
     private Unit previouslyHighlightedUnit;
-    private float delay = 0.3f;
+    private float delay = 0.1f;
     private float timeWhenPressedRightMouseButton;
     private Vector3 rectangleStartPos;
     private Vector3 TL, TR, BL, BR;
