@@ -6,16 +6,30 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-  [SerializeField]
-  private NavMeshAgent agent;
+  [SerializeField] private NavMeshAgent agent;
   [SerializeField] private SpriteRenderer indicator;
+  [SerializeField] private Animator unitAnimator;
 
- 
+
+  private void Update()
+  {
+    Debug.Log(agent.velocity);
+    if (agent.velocity == new Vector3(0,0,0))
+    {
+      unitAnimator.SetBool("isWalking", false);
+    }
+    else
+    {
+      unitAnimator.SetBool("isWalking", true);
+    }
+  }
 
   public void SetDestinationPoint(Vector3 destPos)
   {
-    agent.speed = 3.5f;
+   
     agent.SetDestination(destPos);
+    unitAnimator.SetBool("isWalking", true);
+    
   }
 
   public void OnSelected()
@@ -33,13 +47,5 @@ public class Unit : MonoBehaviour
 
   }
 
-  private void OnTriggerEnter(Collider target)
-  {
-    Debug.Log(target.gameObject.tag);
-    if (target.gameObject.CompareTag("Target"))
-    {
-     
-      agent.speed = 0;
-    }
-  }
+ 
 }
