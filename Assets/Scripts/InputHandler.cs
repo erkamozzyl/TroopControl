@@ -39,7 +39,7 @@ public class InputHandler : MonoBehaviour
         {
             if (isTargetSpecific)
             {
-                _unitCommander.GoDestination(_targetMovement.GetDestinationPos(),GetSelectedUnits());
+                _unitCommander.GoDestination(_targetMovement.GetDestinationPos(),_selector.GetSelectedUnits());
                 
                 isTargetSpecific = false;
             }
@@ -50,21 +50,6 @@ public class InputHandler : MonoBehaviour
         _selector.InteractWithUnits();
     }
 
-     public List<Unit> GetSelectedUnits()
-     {
-         return _selector.selectedUnits;
-     }
+     
 
-     public Vector3 DestinationPoint()
-     {
-         Vector3 destPos = default;
-         Ray ray = _selector.mainCamera.ScreenPointToRay(Input.mousePosition);
-         RaycastHit hit;
-         if (Physics.Raycast(ray, out hit))
-         {
-             destPos = hit.point;
-         }
-
-         return destPos;
-     }
 }

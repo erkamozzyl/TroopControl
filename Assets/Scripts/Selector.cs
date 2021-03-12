@@ -8,7 +8,7 @@ public class Selector : MonoBehaviour
     [SerializeField]public Camera mainCamera;
     public List<Unit> selectedUnits;
     [SerializeField] private RectTransform selectionBox;
-    [SerializeField] private Unit[] allUnits;
+    [SerializeField] public Unit[] allUnits;
     private List<Unit> highlightedUnits = new List<Unit>();
     private Unit previouslyHighlightedUnit;
     private float delay = 0.3f;
@@ -65,7 +65,7 @@ public class Selector : MonoBehaviour
                 {
                     selectedUnits.Add(unit);
                 }
-                selectedUnits.Add(unit);
+                
             }
             /*    else
                 {
@@ -167,8 +167,12 @@ public class Selector : MonoBehaviour
                 }
                 foreach (Unit unit in highlightedUnits)
                 {
-                    unit.OnSelected();
-                    selectedUnits.Add(unit);
+                    if (!selectedUnits.Contains(unit))
+                    {
+                        unit.OnSelected();
+                        selectedUnits.Add(unit);
+                    }
+                    
                 }
                 highlightedUnits.Clear();
             }
@@ -298,5 +302,9 @@ public class Selector : MonoBehaviour
             BR = rayBR.GetPoint(distanceToPlane);
         }
 
+    }
+    public List<Unit> GetSelectedUnits()
+    {
+        return selectedUnits;
     }
 }

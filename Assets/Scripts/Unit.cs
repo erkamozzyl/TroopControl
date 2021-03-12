@@ -6,14 +6,13 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-  [SerializeField] private NavMeshAgent agent;
+  [SerializeField] public NavMeshAgent agent;
   [SerializeField] private SpriteRenderer indicator;
   [SerializeField] private Animator unitAnimator;
 
 
   private void Update()
   {
-    Debug.Log(agent.velocity);
     if (agent.velocity == new Vector3(0,0,0))
     {
       unitAnimator.SetBool("isWalking", false);
@@ -23,10 +22,8 @@ public class Unit : MonoBehaviour
       unitAnimator.SetBool("isWalking", true);
     }
   }
-
   public void SetDestinationPoint(Vector3 destPos)
   {
-   
     agent.SetDestination(destPos);
     unitAnimator.SetBool("isWalking", true);
     
@@ -35,16 +32,10 @@ public class Unit : MonoBehaviour
   public void OnSelected()
   {
     indicator.enabled = true;
-    // outlıne acıldı
   }
-
   public void OnDropped()
   {
-    // unıt sıl
-    // outlıne kapandı
     indicator.enabled = false;
-    
-
   }
 
  
